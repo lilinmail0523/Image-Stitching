@@ -16,7 +16,7 @@ Input: Image_list.txt with sequence images filename and corresponding focus leng
 Output: A panorama
 
 ## Feature detection
-Feature points contain local information that can help us recognize their corresponding in multiples images. To match the corresponding, the robust matching needs accuracy of the feature and invariance to affine changes. SIFT (scale-invariant feature transform) published by David lowe(link) is a feature detection algorithm that takes advantage of difference-of-Gaussian pyramid to acquire more stable features that it is invariant to uniform scaling. The details of SIFT implementation were referenced from this [matlab code](http://ftp.cs.toronto.edu/pub/jepson/teaching/vision/2503/SIFTtutorial.zip).
+Feature points contain local information that can help us recognize their corresponding in multiples images. To match the corresponding, the robust matching needs high accuracy of the feature and invariance to affine changes. SIFT (scale-invariant feature transform) published by David lowe is a feature detection algorithm that takes advantage of difference-of-Gaussian pyramid to acquire more stable features that it is invariant to uniform scaling. The details of SIFT implementation were referenced from this [matlab code](http://ftp.cs.toronto.edu/pub/jepson/teaching/vision/2503/SIFTtutorial.zip).
 
 <p align="center">
 <img src="https://github.com/lilinmail0523/Image-Stitching/blob/main/results/denny.png" width="40%" height="40%" />
@@ -41,7 +41,7 @@ After matching and pairwise alignment, finally images were combined into the pan
 The overlapping region of two images.
 </p>
 
-1.	Direct connection: The overlapping region were divided vertically in half, and pasted by the overlapping region of two images which owned the half that is closer to it. The results showed that there were some visible seams.
+1.	Direct connection: The overlapping region was divided vertically in half, and pasted by the overlapping region of two images which owned the half that was closer to it. The results showed that there were some visible seams.
 
 <p align="center">
 <img src="https://github.com/lilinmail0523/Image-Stitching/blob/main/results/dennyDirectBlending.png" width="50%" height="50%" />
@@ -53,7 +53,7 @@ The overlapping region of two images.
 The results of direct connection.
 </p>
 
-2.	Alpha blending: The overlapping region was set as the windows of blending. The weight was defined as the ratio of distance to the images, and the one that is closer to the images had the larger weight. The result showed that the visible seams were less than direct blending, but the results accompanied the blurred which is called ghost effects in the overlapping region.
+2.	Alpha blending: The overlapping region was set as the windows of blending. The weight was defined as the ratio of distance to the images, and the one that was closer to the images had the larger weight. The results showed that the visible seams were less than direct blending, but the results accompanied the blurred called ghost effects in the overlapping region.
 
 <p align="center">
 <img src="https://github.com/lilinmail0523/Image-Stitching/blob/main/results/dennyAlphablending.png" width="50%" height="50%" />
