@@ -16,7 +16,7 @@ Input: Image_list.txt with sequence images and corresponding focus length which 
 Output: A panorama
 
 ## Feature detection
-Feature points contain local information that can help us recognize their corresponding in multiples images. To match the corresponding, the robust matching needs high accuracy of the feature and invariance to affine changes. SIFT (scale-invariant feature transform) published by David lowe is a feature detection algorithm that takes advantage of difference-of-Gaussian pyramid to acquire more stable features that is invariant to uniform scaling. The details of SIFT implementation were referenced from this [matlab code](http://ftp.cs.toronto.edu/pub/jepson/teaching/vision/2503/SIFTtutorial.zip).
+Robust feature points contain local information that can help us recognize their corresponding in multiples images. SIFT (scale-invariant feature transform) published by David lowe is a feature detection algorithm that takes advantage of difference-of-Gaussian pyramid to acquire more stable features that is invariant to uniform scaling. The details of SIFT implementation were referenced from this [matlab code](http://ftp.cs.toronto.edu/pub/jepson/teaching/vision/2503/SIFTtutorial.zip).
 
 <p align="center">
 <img src="https://github.com/lilinmail0523/Image-Stitching/blob/main/results/denny.png" width="40%" height="40%" />
@@ -27,8 +27,7 @@ Feature points in different scale of the image.
 
 ## Feature Matching
 
-The aim of feature matching is to find closet features of two images for further stitching process. Kd-tree from ANN libraries was used to speed up the matching process by calculating the minimum Euclidean distance of two descriptors. For a key point, if the distance of closest feature was < 0.8 * distance of second closest feature, it was considered as a match. After feature matching, the images and feature points were turned into cylindrical coordinates. There were some mismatches after feature matching because of similar local information in different regions. To deal with those outliers, the RANSAC was applied to calculate the pairwise alignment. The error for computing alignments was ![equation](https://github.com/lilinmail0523/Image-Stitching/blob/main/results/equation.jpg) 
-, and m was the alignment of the coordinates. The RANSAC was run 50 iterations, and in every turn two of random points were selected to build the fitting model. Then the inlier group was set up by testing other data with a threshold,  and alignments were chosen by the minimum error of inlier groups.
+The aim of feature matching is to find closet features of two images for further stitching process. Kd-tree from ANN libraries was used to speed up the matching process by calculating the minimum Euclidean distance of two descriptors. For a key point, if the distance of closest feature was < 0.8 * distance of second closest feature, it was considered as a match. After feature matching, the images and feature points were turned into cylindrical coordinates. To deal with some mismatches after feature matching, the RANSAC was applied to calculate the pairwise alignment. The error for computing alignments was ![equation](https://github.com/lilinmail0523/Image-Stitching/blob/main/results/equation.jpg), and m was the alignment of the coordinates.
 
 ## Blending
 
