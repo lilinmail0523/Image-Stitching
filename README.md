@@ -6,7 +6,7 @@ This is a project from [VFX course](https://www.csie.ntu.edu.tw/~cyy/courses/vfx
 3. Alignment calculation by least squares and RANSAC
 4. Blending by direction connection, alpha blending, and Laplacian pyramid blending. 
  
-The details of the implementation and comparison of blending methods were in the report. The OPENCV, ANN libraries were used in this project. 
+The details of the implementation and the comparison of blending methods were in the [report.pdf](https://github.com/lilinmail0523/Image-Stitching/blob/main/report.pdf). The OPENCV, ANN libraries were used in this project. 
 
 ## Input/Output:
 Input: Image_list.txt with sequence images and corresponding focus length which could be acquired from autostitch
